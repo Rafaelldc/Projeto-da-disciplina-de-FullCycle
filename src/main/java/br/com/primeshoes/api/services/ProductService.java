@@ -16,9 +16,13 @@ public class ProductService{
 	 * Save new product
 	 * @param product
 	 */
-	public void store(Product product)
+	public Product store(Product product)
 	{
-		productRepository.save(product);
+		return productRepository.save(product);
 	}
+
+    public List<Product> getAll() {
+        return productRepository.findAll();
+    }
 
 }
