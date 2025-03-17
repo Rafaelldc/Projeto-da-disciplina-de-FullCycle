@@ -3,10 +3,12 @@ package br.com.primeshoes.api.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.com.primeshoes.api.entites.Product;
 import br.com.primeshoes.api.repository.ProductRepository;
 
+@Service
 public class ProductService{
 	
 	@Autowired
@@ -20,9 +22,10 @@ public class ProductService{
 	{
 		return productRepository.save(product);
 	}
-
-    public List<Product> getAll() {
-        return productRepository.findAll();
-    }
+	
+	public List<Product> getAll()
+	{
+		return productRepository.findAll();
+	}
 
 }
