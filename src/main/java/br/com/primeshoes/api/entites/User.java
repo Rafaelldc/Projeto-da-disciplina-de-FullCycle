@@ -9,16 +9,18 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name="products")
+@Table(name="users")
 @Setter
 @Getter
-public class Product {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String name;
-	private double price;
-	private int stock;
+
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    private String name;
+    private String email;
+    private String passoword;
+    private boolean admin = false;
 
 }
