@@ -30,7 +30,8 @@ public class UserController {
         UserDTO userResponseDTO = UserMapper.toDTO(userService.store(userDto));
         return new ResponseEntity<>(userResponseDTO, HttpStatus.CREATED);
     }
-
+    //ta funcionando?
+    
     @GetMapping
     public List<UserDTO> listAll(){
         return userService.getAll();
