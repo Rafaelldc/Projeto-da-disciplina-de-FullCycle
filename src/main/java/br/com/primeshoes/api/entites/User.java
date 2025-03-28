@@ -20,7 +20,7 @@ public class User {
     private long id;
     private String name;
     private String email;
-    private String passoword;
+    private String password;
     private boolean admin = false;
 
 }

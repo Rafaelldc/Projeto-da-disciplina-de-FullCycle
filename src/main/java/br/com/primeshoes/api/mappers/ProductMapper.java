@@ -7,12 +7,12 @@ public class ProductMapper {
     public static ProductDTO toDTO(Product product){
         return new ProductDTO(product.getName(),product.getPrice(), product.getStock());
     }
-    public static Product toEntity(ProductDTO productDto){
+    public static Product toEntity(ProductDTO productDTO){
         
         Product product = new Product();
-        product.setName(productDto.name());
-        product.setPrice(productDto.price());
-        product.setStock(productDto.stock());
+        product.setName(productDTO.name());
+        product.setPrice(productDTO.price());
+        product.setStock(productDTO.stock());
         return product;
     }
 }

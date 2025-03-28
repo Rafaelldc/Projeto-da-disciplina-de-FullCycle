@@ -25,8 +25,8 @@ public class ProductController {
 	@PostMapping
 	public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTO)
 	{
-		ProductDTO productResponseDto = ProductMapper.toDTO(productService.store(productDTO));
-		return new ResponseEntity<>(productResponseDto, HttpStatus.CREATED);
+		ProductDTO productResponseDTO = ProductMapper.toDTO(productService.store(productDTO));
+		return new ResponseEntity<>(productResponseDTO, HttpStatus.CREATED);
 	}
 	
 	@GetMapping

@@ -1,6 +1,7 @@
-CREATE TABLE users{
+CREATE TABLE users (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    passoword DECIMAL(255) NOT NULL
-};
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    admin TINYINT(1) DEFAULT 0
+);

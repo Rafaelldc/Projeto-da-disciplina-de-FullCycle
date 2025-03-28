@@ -5,7 +5,7 @@ import br.com.primeshoes.api.dtos.UserDTO;
 
 public class UserMapper {
     public static UserDTO toDTO(User user){
-        return new UserDTO(user.getName(), user.getEmail(), user.getPassoword());
+        return new UserDTO(user.getName(), user.getEmail(), user.getPassword());
     }
 
     public static User toEntity(UserDTO userDTO){
@@ -13,7 +13,7 @@ public class UserMapper {
         User user = new User();
         user.setName(userDTO.name());
         user.setEmail(userDTO.email());
-        user.setPassoword(userDTO.passoword());
+        user.setPassword(userDTO.password());
         return user;
 
     }

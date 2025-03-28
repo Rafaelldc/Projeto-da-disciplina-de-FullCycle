@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.primeshoes.api.entites.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long >{
+public interface UserRepository extends JpaRepository<User, Long>{
 
 }

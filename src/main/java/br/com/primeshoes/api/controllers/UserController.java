@@ -12,25 +12,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.primeshoes.api.dtos.UserDTO;
-
 import br.com.primeshoes.api.mappers.UserMapper;
 import br.com.primeshoes.api.services.UserService;
-
-
 
 @RestController
 @RequestMapping("/api/users")
 
 public class UserController {
+
     @Autowired
     UserService userService;
 
     @PostMapping
-    public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDto){
-        UserDTO userResponseDTO = UserMapper.toDTO(userService.store(userDto));
+    public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO){
+       
+        UserDTO userResponseDTO = UserMapper.toDTO(userService.store(userDTO));
         return new ResponseEntity<>(userResponseDTO, HttpStatus.CREATED);
     }
-    //ta funcionando?
+    
     
     @GetMapping
     public List<UserDTO> listAll(){
