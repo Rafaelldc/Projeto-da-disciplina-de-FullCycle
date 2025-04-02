@@ -1,5 +1,7 @@
 package br.com.primeshoes.api.entites;
 
+import java.sql.Date;
+
 import br.com.primeshoes.api.enuns.PaymentMethod;
 import br.com.primeshoes.api.enuns.PaymentStatus;
 import jakarta.persistence.Entity;
@@ -15,69 +17,98 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "payments")
 public class Payment {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	
+	@OneToOne
+	@JoinColumn(name = "order_id")
+	private Order order;
+	
+	private float amount;
+	
+	@Enumerated(EnumType.STRING)
+	private PaymentMethod paymentMethod;
+	
+	@Enumerated(EnumType.STRING)
+	private PaymentStatus paymentStatus;
+	private Date created_at;
+	private Date updated_at;
+	
+	public Payment() {	}
+	
+	
 
-    @OneToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
+	public Payment(long id, Order order, float amount, PaymentMethod paymentMethod, PaymentStatus paymentStatus,
+			Date created_at, Date updated_at) {
+		super();
+		this.id = id;
+		this.order = order;
+		this.amount = amount;
+		this.paymentMethod = paymentMethod;
+		this.paymentStatus = paymentStatus;
+		this.created_at = created_at;
+		this.updated_at = updated_at;
+	}
 
-    private float amount;
 
-    @Enumerated(EnumType.STRING)
-    private PaymentMethod paymentMethod;
 
-    @Enumerated(EnumType.STRING)
-    private PaymentStatus paymentStatus;
-    public Payment() {
-    }
+	public long getId() {
+		return id;
+	}
 
-    public Payment(long id, Order order, float amount, PaymentMethod paymentMethod, PaymentStatus paymentStatus) {
-        this.id = id;
-        this.order = order;
-        this.amount = amount;
-        this.paymentMethod = paymentMethod;
-        this.paymentStatus = paymentStatus;
-    }
+	public void setId(long id) {
+		this.id = id;
+	}
 
-    public long getId() {
-        return id;
-    }
+	public Order getOrder() {
+		return order;
+	}
 
-    public void setId(long id) {
-        this.id = id;
-    }
+	public void setOrder(Order order) {
+		this.order = order;
+	}
 
-    public Order getOrder() {
-        return order;
-    }
+	public float getAmount() {
+		return amount;
+	}
 
-    public void setOrder(Order order) {
-        this.order = order;
-    }
+	public void setAmount(float amount) {
+		this.amount = amount;
+	}
 
-    public float getAmount() {
-        return amount;
-    }
+	public PaymentMethod getPaymentMethod() {
+		return paymentMethod;
+	}
 
-    public void setAmount(float amount) {
-        this.amount = amount;
-    }
+	public void setPaymentMethod(PaymentMethod paymentMethod) {
+		this.paymentMethod = paymentMethod;
+	}
 
-    public PaymentMethod getPaymentMethod() {
-        return paymentMethod;
-    }
+	public PaymentStatus getPaymentStatus() {
+		return paymentStatus;
+	}
 
-    public void setPaymentMethod(PaymentMethod paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
+	public void setPaymentStatus(PaymentStatus paymentStatus) {
+		this.paymentStatus = paymentStatus;
+	}
 
-    public PaymentStatus getPaymentStatus() {
-        return paymentStatus;
-    }
+	public Date getCreated_at() {
+		return created_at;
+	}
 
-    public void setPaymentStatus(PaymentStatus paymentStatus) {
-        this.paymentStatus = paymentStatus;
-    }
+	public void setCreated_at(Date created_at) {
+		this.created_at = created_at;
+	}
+
+	public Date getUpdated_at() {
+		return updated_at;
+	}
+
+	public void setUpdated_at(Date updated_at) {
+		this.updated_at = updated_at;
+	}
+	
+	
 }

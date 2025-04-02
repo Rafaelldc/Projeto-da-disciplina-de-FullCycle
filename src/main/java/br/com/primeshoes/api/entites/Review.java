@@ -14,89 +14,90 @@ import jakarta.persistence.Table;
 @Table(name = "reviews")
 public class Review {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private int rating;
-    private String comment;
-    
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	private int rating;
+	private String comment;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name = "product_variation_id")
+	private ProductVariation productVariation;
+	
+	private Date created_at;
+	private Date updated_at;
+	
+	public Review() {}
 
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
+	public Review(long id, int rating, String comment, User user, ProductVariation productVariation, Date created_at,
+			Date updated_at) {
+		super();
+		this.id = id;
+		this.rating = rating;
+		this.comment = comment;
+		this.user = user;
+		this.productVariation = productVariation;
+		this.created_at = created_at;
+		this.updated_at = updated_at;
+	}
 
-    private Date created_at;
-    private Date update_at;
-    
-    public Review() {
-    }
+	public long getId() {
+		return id;
+	}
 
-    public Review(long id, int rating, String comment, User user, Product product, Date created_at, Date update_at) {
-        this.id = id;
-        this.rating = rating;
-        this.comment = comment;
-        this.user = user;
-        this.product = product;
-        this.created_at = created_at;
-        this.update_at = update_at;
-    }
+	public void setId(long id) {
+		this.id = id;
+	}
 
-    public long getId() {
-        return id;
-    }
+	public int getRating() {
+		return rating;
+	}
 
-    public void setId(long id) {
-        this.id = id;
-    }
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
 
-    public int getRating() {
-        return rating;
-    }
+	public String getComment() {
+		return comment;
+	}
 
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 
-    public String getComment() {
-        return comment;
-    }
+	public User getUser() {
+		return user;
+	}
 
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
+	public void setUser(User user) {
+		this.user = user;
+	}
 
-    public User getUser() {
-        return user;
-    }
+	public ProductVariation getProductVariation() {
+		return productVariation;
+	}
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+	public void setProductVariation(ProductVariation productVariation) {
+		this.productVariation = productVariation;
+	}
 
-    public Product getProduct() {
-        return product;
-    }
+	public Date getCreated_at() {
+		return created_at;
+	}
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }
+	public void setCreated_at(Date created_at) {
+		this.created_at = created_at;
+	}
 
-    public Date getCreated_at() {
-        return created_at;
-    }
+	public Date getUpdated_at() {
+		return updated_at;
+	}
 
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
-    }
-
-    public Date getUpdate_at() {
-        return update_at;
-    }
-
-    public void setUpdate_at(Date update_at) {
-        this.update_at = update_at;
-    }
+	public void setUpdated_at(Date updated_at) {
+		this.updated_at = updated_at;
+	}
 }

@@ -7,13 +7,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Table(name="products")
-@Setter
-@Getter
 public class Product {
 	
 	@Id
@@ -27,23 +23,25 @@ public class Product {
 	private String imageUrl;
 	private float rating;
 	private Date created_at;
-	private Date update_at;
+	private Date updated_at;
 	
-	public Product(){}
+	public Product() {}
 
-	public Product(long id, String name, String descriprion, float price, String category, String brand, String imageUrl, float rating, Date created_at, Date update_at){
+	public Product(long id, String name, String description, float price, String category, String brand,
+			String imageUrl, float rating, Date created_at, Date updated_at) {
+		super();
 		this.id = id;
-        this.name = name;
-        this.description = descriprion;
+		this.name = name;
+		this.description = description;
 		this.price = price;
 		this.category = category;
 		this.brand = brand;
 		this.imageUrl = imageUrl;
 		this.rating = rating;
-        this.created_at = created_at;
-        this.update_at = update_at;
-    
+		this.created_at = created_at;
+		this.updated_at = updated_at;
 	}
+
 	public long getId() {
 		return id;
 	}
@@ -116,11 +114,11 @@ public class Product {
 		this.created_at = created_at;
 	}
 
-	public Date getUpdate_at() {
-		return update_at;
+	public Date getUpdated_at() {
+		return updated_at;
 	}
 
-	public void setUpdate_at(Date update_at) {
-		this.update_at = update_at;
-	}
+	public void setUpdated_at(Date updated_at) {
+		this.updated_at = updated_at;
+	}	
 }

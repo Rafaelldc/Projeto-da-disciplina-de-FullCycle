@@ -9,9 +9,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "order_items")
-public class OrderItem {
-
+@Table(name = "cart_items")
+public class CartItem {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -19,21 +19,21 @@ public class OrderItem {
 	private float subtotal;
 	
 	@ManyToOne
-	@JoinColumn(name = "order_id")
-	private Order order;
+	@JoinColumn(name = "cart_id")
+	private Cart cart;
 	
 	@ManyToOne
 	@JoinColumn(name = "product_variation_id")
 	private ProductVariation productVariation;
 	
-	public OrderItem() {	}
+	public CartItem() {}
 
-	public OrderItem(long id, int quantity, float subtotal, Order order, ProductVariation productVariation) {
+	public CartItem(long id, int quantity, float subtotal, Cart cart, ProductVariation productVariation) {
 		super();
 		this.id = id;
 		this.quantity = quantity;
 		this.subtotal = subtotal;
-		this.order = order;
+		this.cart = cart;
 		this.productVariation = productVariation;
 	}
 
@@ -61,12 +61,12 @@ public class OrderItem {
 		this.subtotal = subtotal;
 	}
 
-	public Order getOrder() {
-		return order;
+	public Cart getCart() {
+		return cart;
 	}
 
-	public void setOrder(Order order) {
-		this.order = order;
+	public void setCart(Cart cart) {
+		this.cart = cart;
 	}
 
 	public ProductVariation getProductVariation() {
@@ -75,5 +75,5 @@ public class OrderItem {
 
 	public void setProductVariation(ProductVariation productVariation) {
 		this.productVariation = productVariation;
-	}		
+	}
 }

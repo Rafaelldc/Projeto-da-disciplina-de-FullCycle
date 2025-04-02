@@ -2,6 +2,7 @@ package br.com.primeshoes.api.entites;
 
 import java.sql.Date;
 
+import br.com.primeshoes.api.enuns.OrderStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -14,103 +15,92 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "orders")
-
 public class Order {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+	
+	private float totalPrice;
+	
+	@Enumerated(EnumType.STRING)
+	private OrderStatus status;
+	
+	private String trackingCode;
+	private Date created_at;
+	private Date updated_at;
+	
+	public Order() {}
 
-    private float totalPrice;
+	public Order(long id, User user, float totalPrice, OrderStatus status, String trackingCode, Date created_at,
+			Date updated_at) {
+		super();
+		this.id = id;
+		this.user = user;
+		this.totalPrice = totalPrice;
+		this.status = status;
+		this.trackingCode = trackingCode;
+		this.created_at = created_at;
+		this.updated_at = updated_at;
+	}
 
-    private float status;
+	public long getId() {
+		return id;
+	}
 
-    @Enumerated(EnumType.STRING)
-    private String paymentMethod;
-    private String trackingCode;
-    private Date created_at;
-    private Date update_at;
+	public void setId(long id) {
+		this.id = id;
+	}
 
-    public Order() {
-    }
+	public User getUser() {
+		return user;
+	}
 
-    public Order(long id, User user, float totalPrice, float status, String paymentMethod, String trackingCode, Date created_at, Date update_at) {
-        this.id = id;
-        this.user = user;
-        this.totalPrice = totalPrice;
-        this.status = status;
-        this.paymentMethod = paymentMethod;
-        this.trackingCode = trackingCode;
-        this.created_at = created_at;
-        this.update_at = update_at;
-    }
+	public void setUser(User user) {
+		this.user = user;
+	}
 
-    public long getId() {
-        return id;
-    }
+	public float getTotalPrice() {
+		return totalPrice;
+	}
 
-    public void setId(long id) {
-        this.id = id;
-    }
+	public void setTotalPrice(float totalPrice) {
+		this.totalPrice = totalPrice;
+	}
 
-    public User getUser() {
-        return user;
-    }
+	public OrderStatus getStatus() {
+		return status;
+	}
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+	public void setStatus(OrderStatus status) {
+		this.status = status;
+	}
 
-    public float getTotalPrice() {
-        return totalPrice;
-    }
+	public String getTrackingCode() {
+		return trackingCode;
+	}
 
-    public void setTotalPrice(float totalPrice) {
-        this.totalPrice = totalPrice;
-    }
+	public void setTrackingCode(String trackingCode) {
+		this.trackingCode = trackingCode;
+	}
 
-    public float getStatus() {
-        return status;
-    }
+	public Date getCreated_at() {
+		return created_at;
+	}
 
-    public void setStatus(float status) {
-        this.status = status;
-    }
+	public void setCreated_at(Date created_at) {
+		this.created_at = created_at;
+	}
 
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
+	public Date getUpdated_at() {
+		return updated_at;
+	}
 
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
-
-    public String getTrackingCode() {
-        return trackingCode;
-    }
-
-    public void setTrackingCode(String trackingCode) {
-        this.trackingCode = trackingCode;
-    }
-
-    public Date getCreated_at() {
-        return created_at;
-    }
-
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
-    }
-
-    public Date getUpdate_at() {
-        return update_at;
-    }
-
-    public void setUpdate_at(Date update_at) {
-        this.update_at = update_at;
-    }
-
+	public void setUpdated_at(Date updated_at) {
+		this.updated_at = updated_at;
+	}
 }
