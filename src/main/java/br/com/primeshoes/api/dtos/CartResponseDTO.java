@@ -1,5 +1,7 @@
 package br.com.primeshoes.api.dtos;
 
-public record CartResponseDTO() {
-
+public record CartResponseDTO(
+    long id
+) {
+    
 }

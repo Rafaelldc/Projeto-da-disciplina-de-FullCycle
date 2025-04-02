@@ -1,5 +1,7 @@
 package br.com.primeshoes.api.dtos;
 
-public record CartCreatedDTO() {
+import br.com.primeshoes.api.entites.User;
 
-}
+public record CartCreatedDTO(
+    User user
+) {}

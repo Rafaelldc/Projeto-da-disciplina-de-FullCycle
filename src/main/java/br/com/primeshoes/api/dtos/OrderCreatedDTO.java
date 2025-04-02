@@ -1,5 +1,12 @@
 package br.com.primeshoes.api.dtos;
 
-public record OrderCreatedDTO() {
+import br.com.primeshoes.api.entites.User;
+
+public record OrderCreatedDTO(
+    User user,
+    float totalPrice
+    
+
+) {
 
 }

@@ -1,5 +1,7 @@
 package br.com.primeshoes.api.dtos;
 
-public record CartitemCreatedDTO() {
-
+public record CartitemCreatedDTO(
+    Integer quantity,
+    float subtotal
+) {
 }
