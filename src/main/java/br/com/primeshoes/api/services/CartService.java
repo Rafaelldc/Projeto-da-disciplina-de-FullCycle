@@ -1,5 +1,5 @@
 package br.com.primeshoes.api.services;
 
-public class OrderItemService {
+public class CartService {
 
 }
