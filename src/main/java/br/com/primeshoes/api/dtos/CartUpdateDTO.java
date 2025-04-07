@@ -6,5 +6,4 @@ public record CartUpdateDTO(
 		long id,
 		User user
 		) {
-
 }

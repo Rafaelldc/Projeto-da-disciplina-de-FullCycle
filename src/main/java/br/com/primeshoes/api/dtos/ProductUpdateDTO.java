@@ -1,6 +1,7 @@
 package br.com.primeshoes.api.dtos;
 
-public record ProductCreatedDTO(
+public record ProductUpdateDTO(
+		long id,
 		String name,
 		String description,
 		float price,

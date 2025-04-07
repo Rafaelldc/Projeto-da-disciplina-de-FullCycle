@@ -23,7 +23,6 @@ public class ProductVariation {
 	private Product product;
 	
 	public ProductVariation() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public ProductVariation(long id, String color, float size, int stock, Product product) {

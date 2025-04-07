@@ -4,7 +4,7 @@ import java.time.Instant;
 
 import br.com.primeshoes.api.entites.ProductVariation;
 
-public record PromotionResponseDTO(
+public record PromotionUpdateDTO(
 		long id,
 		String name,
 		float discountPercentage,

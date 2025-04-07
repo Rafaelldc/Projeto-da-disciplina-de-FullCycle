@@ -1,6 +1,6 @@
 package br.com.primeshoes.api.entites;
 
-import java.sql.Date;
+import java.time.Instant;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,7 +11,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "promotions")
+@Table(name="promotions")
 public class Promotion {
 	
 	@Id
@@ -19,59 +19,83 @@ public class Promotion {
 	private long id;
 	private String name;
 	private float discountPercentage;
-	private Date startDate;
-	private Date endDate;
+	private Instant startDate;
+	private Instant endDate;
 	private boolean isActive;
 	
 	@ManyToOne
-	@JoinColumn(name = "product_variation_id")
+	@JoinColumn(name = "product_id_variation")
 	private ProductVariation productVariation;
 	
-	public Promotion() {}
-		
-	public Promotion(long id, String name, float discountPercentage, Date startDate, Date endDate, boolean isActive) {
+	public Promotion() {
+	}
+
+	public Promotion(long id, String name, float discountPercentage, Instant startDate, Instant endDate, boolean isActive, ProductVariation productVariation) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.discountPercentage = discountPercentage;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.isActive = isActive;
+		this.productVariation = productVariation;
 	}
-	
+
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public float getDiscountPercentage() {
 		return discountPercentage;
 	}
+
 	public void setDiscountPercentage(float discountPercentage) {
 		this.discountPercentage = discountPercentage;
 	}
-	public Date getStartDate() {
+
+	public Instant getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(Date startDate) {
+
+	public void setStartDate(Instant startDate) {
 		this.startDate = startDate;
 	}
-	public Date getEndDate() {
+
+	public Instant getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(Date endDate) {
+
+	public void setEndDate(Instant endDate) {
 		this.endDate = endDate;
 	}
+
 	public boolean isActive() {
 		return isActive;
 	}
+
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
+
+	public ProductVariation getProductVariation() {
+		return productVariation;
+	}
+
+	public void setProductVariation(ProductVariation productVariation) {
+		this.productVariation = productVariation;
+	}
+	
+	
 }

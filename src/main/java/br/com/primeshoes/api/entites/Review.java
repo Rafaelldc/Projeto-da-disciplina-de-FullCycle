@@ -1,6 +1,6 @@
 package br.com.primeshoes.api.entites;
 
-import java.sql.Date;
+import java.time.Instant;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,30 +11,29 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "reviews")
+@Table(name="reviews")
 public class Review {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private int rating;
 	private String comment;
-	
 	@ManyToOne
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name="user_id")
 	private User user;
 	
 	@ManyToOne
-	@JoinColumn(name = "product_variation_id")
+	@JoinColumn(name="product_variation_id")
 	private ProductVariation productVariation;
 	
-	private Date created_at;
-	private Date updated_at;
+	private Instant created_at;
+	private Instant updated_at;
 	
 	public Review() {}
 
-	public Review(long id, int rating, String comment, User user, ProductVariation productVariation, Date created_at,
-			Date updated_at) {
+	public Review(long id, int rating, String comment, User user, ProductVariation productVariation, Instant created_at,
+			Instant updated_at) {
 		super();
 		this.id = id;
 		this.rating = rating;
@@ -85,19 +84,21 @@ public class Review {
 		this.productVariation = productVariation;
 	}
 
-	public Date getCreated_at() {
+	public Instant getCreated_at() {
 		return created_at;
 	}
 
-	public void setCreated_at(Date created_at) {
+	public void setCreated_at(Instant created_at) {
 		this.created_at = created_at;
 	}
 
-	public Date getUpdated_at() {
+	public Instant getUpdated_at() {
 		return updated_at;
 	}
 
-	public void setUpdated_at(Date updated_at) {
+	public void setUpdated_at(Instant updated_at) {
 		this.updated_at = updated_at;
 	}
+	
+	
 }

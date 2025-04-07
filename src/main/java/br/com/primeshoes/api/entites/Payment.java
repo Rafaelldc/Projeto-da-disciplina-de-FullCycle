@@ -1,6 +1,6 @@
 package br.com.primeshoes.api.entites;
 
-import java.sql.Date;
+import java.time.Instant;
 
 import br.com.primeshoes.api.enuns.PaymentMethod;
 import br.com.primeshoes.api.enuns.PaymentStatus;
@@ -15,11 +15,11 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "payments")
+@Table(name="payments")
 public class Payment {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private long id;
 	
 	@OneToOne
@@ -33,15 +33,15 @@ public class Payment {
 	
 	@Enumerated(EnumType.STRING)
 	private PaymentStatus paymentStatus;
-	private Date created_at;
-	private Date updated_at;
 	
-	public Payment() {	}
+	private Instant created_at;
+	private Instant updated_at;
 	
-	
+	public Payment() {
+	}
 
 	public Payment(long id, Order order, float amount, PaymentMethod paymentMethod, PaymentStatus paymentStatus,
-			Date created_at, Date updated_at) {
+			Instant created_at, Instant updated_at) {
 		super();
 		this.id = id;
 		this.order = order;
@@ -51,8 +51,6 @@ public class Payment {
 		this.created_at = created_at;
 		this.updated_at = updated_at;
 	}
-
-
 
 	public long getId() {
 		return id;
@@ -94,21 +92,23 @@ public class Payment {
 		this.paymentStatus = paymentStatus;
 	}
 
-	public Date getCreated_at() {
+	public Instant getCreated_at() {
 		return created_at;
 	}
 
-	public void setCreated_at(Date created_at) {
+	public void setCreated_at(Instant created_at) {
 		this.created_at = created_at;
 	}
 
-	public Date getUpdated_at() {
+	public Instant getUpdated_at() {
 		return updated_at;
 	}
 
-	public void setUpdated_at(Date updated_at) {
+	public void setUpdated_at(Instant updated_at) {
 		this.updated_at = updated_at;
 	}
+	
+	
 	
 	
 }
