@@ -3,6 +3,7 @@ package br.com.primeshoes.api.entites;
 import java.sql.Date;
 
 import br.com.primeshoes.api.enuns.OrderStatus;
+import br.com.primeshoes.api.enuns.PaymentMethod;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -14,9 +15,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "orders")
+@Table(name ="orders")
 public class Order {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -26,23 +27,25 @@ public class Order {
 	private User user;
 	
 	private float totalPrice;
-	
 	@Enumerated(EnumType.STRING)
 	private OrderStatus status;
 	
+	private PaymentMethod paymentMethod;
 	private String trackingCode;
 	private Date created_at;
 	private Date updated_at;
 	
-	public Order() {}
+	public Order() {
+	}
 
-	public Order(long id, User user, float totalPrice, OrderStatus status, String trackingCode, Date created_at,
-			Date updated_at) {
+	public Order(long id, User user, float totalPrice, OrderStatus status, PaymentMethod paymentMethod, String trackingCode,
+			Date created_at, Date updated_at) {
 		super();
 		this.id = id;
 		this.user = user;
 		this.totalPrice = totalPrice;
 		this.status = status;
+		this.paymentMethod = paymentMethod;
 		this.trackingCode = trackingCode;
 		this.created_at = created_at;
 		this.updated_at = updated_at;
@@ -80,6 +83,14 @@ public class Order {
 		this.status = status;
 	}
 
+	public PaymentMethod getPaymentMethod() {
+		return paymentMethod;
+	}
+
+	public void setPaymentMethod(PaymentMethod paymentMethod) {
+		this.paymentMethod = paymentMethod;
+	}
+
 	public String getTrackingCode() {
 		return trackingCode;
 	}
@@ -103,4 +114,7 @@ public class Order {
 	public void setUpdated_at(Date updated_at) {
 		this.updated_at = updated_at;
 	}
+	
+	
+	
 }

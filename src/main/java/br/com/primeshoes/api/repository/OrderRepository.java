@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.primeshoes.api.entites.Order;
 
 @Repository
-public interface OrderRepository extends JpaRepository<Order, Long>{
+public interface OrderRepository extends JpaRepository<Order, Long> {
 
 }

@@ -5,16 +5,15 @@ import br.com.primeshoes.api.dtos.CartResponseDTO;
 import br.com.primeshoes.api.entites.Cart;
 
 public class CartMapper {
-
-    public static Cart toEntity(CartCreatedDTO cartCreatedDTO){
-        Cart cart = new Cart();
-        return cart;
-    }
-
-    public static CartResponseDTO toDTO(Cart Cart){
-        
-        CartResponseDTO cartResponse = new CartResponseDTO(0);
-
-        return cartResponse;
-    }
+	
+	public static CartResponseDTO toDTO(Cart cart) {
+		CartResponseDTO cartResponse = new CartResponseDTO(cart.getId(), cart.getUser());
+		return cartResponse;
+	}
+	
+	public static Cart toEntity(CartCreatedDTO cartCreateDTO) {
+		Cart cart = new Cart();
+		cart.setUser(cartCreateDTO.user());
+		return cart;
+	}
 }
